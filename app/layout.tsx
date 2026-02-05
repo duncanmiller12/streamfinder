@@ -5,7 +5,7 @@ import "./globals.css";
 // Root layout — handles <head> metadata including PWA tags.
 // =============================================================================
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://streamfinder-dlnedllmt-duncan-millers-projects-41d43e33.vercel.app/";
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://streamfinder-dlnedllmt-duncan-millers-projects-41d43e33.vercel.app").replace(/\/$/, "");
 const description =
   "Find where your favorite movies and TV shows are streaming. Search once, discover everywhere.";
 
