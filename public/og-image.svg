@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0f0f0f"/>
+
+  <!-- Logo icon (scaled and centered) -->
+  <g transform="translate(200, 165)">
+    <rect width="300" height="300" rx="60" fill="url(#bg)"/>
+    <rect x="47" y="85" width="206" height="130" rx="11" fill="none" stroke="white" stroke-width="18"/>
+    <polygon points="120,120 120,180 182,150" fill="white"/>
+  </g>
+
+  <!-- Text -->
+  <text x="540" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="white">StreamFinder</text>
+  <text x="540" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#a1a1aa">Find where your favorite movies</text>
+  <text x="540" y="410" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#a1a1aa">and TV shows are streaming</text>
+</svg>
