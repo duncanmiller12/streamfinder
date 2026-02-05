@@ -1,0 +1,18 @@
+{
+  "name": "StreamFinder",
+  "short_name": "StreamFinder",
+  "description": "Find movies and TV shows on your streaming services",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0f0f0f",
+  "background_color": "#0f0f0f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
