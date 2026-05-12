@@ -16,7 +16,9 @@ export interface StreamingService {
   textColor: string;
   /** TMDB logo path (e.g. "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"). */
   logoPath: string;
-  /** App Store link — opens the app if installed, prompts download if not. */
+  /** Custom URL scheme — opens the native app directly if installed. */
+  appScheme: string;
+  /** App Store link used as fallback when the app is not installed. */
   appStoreUrl: string;
 }
 

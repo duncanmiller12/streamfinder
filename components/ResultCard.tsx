@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { FilteredResult } from "@/lib/types";
 import { SERVICE_MAP } from "@/lib/streaming-services";
+import { openServiceApp } from "@/lib/open-service";
 
 interface Props {
   result: FilteredResult;
@@ -86,14 +87,15 @@ export default function ResultCard({ result, index, onSelect }: Props) {
             const service = SERVICE_MAP.get(provider.providerId);
             if (!service) return null;
             return (
-              <a
+              <button
                 key={provider.providerId}
-                href={service.appStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                type="button"
                 title={service.name}
                 className="flex-shrink-0 hover:scale-110 transition-transform"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openServiceApp(service);
+                }}
               >
                 <Image
                   src={`${LOGO_BASE}${service.logoPath}`}
@@ -103,7 +105,7 @@ export default function ResultCard({ result, index, onSelect }: Props) {
                   className="rounded-lg object-contain"
                   unoptimized
                 />
-              </a>
+              </button>
             );
           })}
         </div>

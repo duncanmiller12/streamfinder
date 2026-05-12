@@ -19,6 +19,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#E50914",
     textColor: "#FFFFFF",
     logoPath: "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+    appScheme: "nflx://",
     appStoreUrl: "https://apps.apple.com/app/id363590051",
   },
   {
@@ -28,6 +29,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#28B46C",
     textColor: "#FFFFFF",
     logoPath: "/zxrVdFjIjLqkfnwyghnfywTn3Lh.jpg",
+    appScheme: "hulu://",
     appStoreUrl: "https://apps.apple.com/app/id376510438",
   },
   {
@@ -37,6 +39,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#17337D",
     textColor: "#FFFFFF",
     logoPath: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+    appScheme: "disneyplus://",
     appStoreUrl: "https://apps.apple.com/app/id1446075923",
   },
   {
@@ -46,6 +49,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#00A8E1",
     textColor: "#FFFFFF",
     logoPath: "/pvske1MyAoymrs5bguRfVqYiM9a.jpg",
+    appScheme: "primevideo://",
     appStoreUrl: "https://apps.apple.com/app/id545519333",
   },
   {
@@ -55,6 +59,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#002BE7",
     textColor: "#FFFFFF",
     logoPath: "/jbe4gVSfRlbPTdESXhEKpornsfu.jpg",
+    appScheme: "max://",
     appStoreUrl: "https://apps.apple.com/app/id1666653815",
   },
   {
@@ -64,6 +69,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#2C2C2C",
     textColor: "#FFFFFF",
     logoPath: "/6uhKBfmtzFqOcLousHwZuzcrScK.jpg",
+    appScheme: "com.apple.tv://",
     appStoreUrl: "https://apps.apple.com/app/id1174078549",
   },
   {
@@ -73,6 +79,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#1A58C5",
     textColor: "#FFFFFF",
     logoPath: "/5wym1C0jAvJeGirPdgVpcW0CCuy.jpg",
+    appScheme: "paramount://",
     appStoreUrl: "https://apps.apple.com/app/id1340650234",
   },
   {
@@ -82,6 +89,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#000000",
     textColor: "#FFFFFF",
     logoPath: "/2aGrp1xw3qhwCYvNGAJZPdjfeeX.jpg",
+    appScheme: "peacocktv://",
     appStoreUrl: "https://apps.apple.com/app/id1508186374",
   },
 ];

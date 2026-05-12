@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import type { FilteredResult, ExtraDetail } from "@/lib/types";
 import { SERVICE_MAP } from "@/lib/streaming-services";
+import { openServiceApp } from "@/lib/open-service";
 
 interface Props {
   result: FilteredResult;
@@ -203,13 +204,12 @@ export default function DetailView({ result, onBack }: Props) {
                 if (!service) return null;
                 const isOnMyServices = matchedIds.has(provider.providerId);
                 return (
-                  <a
+                  <button
                     key={provider.providerId}
-                    href={service.appStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    type="button"
                     title={`Open ${service.name}`}
                     className="flex flex-col items-center gap-1.5 group"
+                    onClick={() => openServiceApp(service)}
                   >
                     <div
                       className={[
@@ -231,7 +231,7 @@ export default function DetailView({ result, onBack }: Props) {
                     <span className="text-xs text-gray-500 group-hover:text-gray-300 transition-colors">
                       {service.shortName}
                     </span>
-                  </a>
+                  </button>
                 );
               })}
             </div>
