@@ -16,6 +16,23 @@ export interface StreamingService {
   textColor: string;
   /** TMDB logo path (e.g. "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"). */
   logoPath: string;
+  /** App Store link — opens the app if installed, prompts download if not. */
+  appStoreUrl: string;
+}
+
+// ─── Detail data fetched separately for the full-screen detail view ──────────
+
+export interface CastMember {
+  name: string;
+  character: string;
+  profilePath: string | null;
+}
+
+export interface ExtraDetail {
+  runtime?: number;
+  numberOfSeasons?: number;
+  numberOfEpisodes?: number;
+  cast: CastMember[];
 }
 
 // ─── Provider returned by TMDB's watch/providers endpoint ────────────────────

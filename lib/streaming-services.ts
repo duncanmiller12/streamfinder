@@ -7,8 +7,8 @@ import type { StreamingService } from "./types";
 // the /movie/{id}/watch/providers and /tv/{id}/watch/providers endpoints to
 // indicate where a title is available.
 //
-// If a service changes its TMDB ID in the future you only need to update it
-// here — no other code needs to change.
+// appStoreUrl — links to the iOS App Store page for the service.  On a device
+// with the app installed the App Store shows "OPEN"; without it, "GET".
 // =============================================================================
 
 export const STREAMING_SERVICES: StreamingService[] = [
@@ -19,6 +19,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#E50914",
     textColor: "#FFFFFF",
     logoPath: "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+    appStoreUrl: "https://apps.apple.com/us/app/netflix/id363590051",
   },
   {
     id: 15,
@@ -27,6 +28,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#28B46C",
     textColor: "#FFFFFF",
     logoPath: "/zxrVdFjIjLqkfnwyghnfywTn3Lh.jpg",
+    appStoreUrl: "https://apps.apple.com/us/app/hulu-stream-movies-tv/id376510438",
   },
   {
     id: 337,
@@ -35,51 +37,52 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#17337D",
     textColor: "#FFFFFF",
     logoPath: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+    appStoreUrl: "https://apps.apple.com/us/app/disney/id1446075923",
   },
   {
-    // Amazon Prime Video — subscription streaming content
     id: 9,
     name: "Prime Video",
     shortName: "Prime",
     brandColor: "#00A8E1",
     textColor: "#FFFFFF",
     logoPath: "/pvske1MyAoymrs5bguRfVqYiM9a.jpg",
+    appStoreUrl: "https://apps.apple.com/us/app/amazon-prime-video/id545519333",
   },
   {
-    // Max (formerly HBO Max) — TMDB still uses "HBO Max" name
     id: 1899,
     name: "Max",
     shortName: "Max",
     brandColor: "#002BE7",
     textColor: "#FFFFFF",
     logoPath: "/jbe4gVSfRlbPTdESXhEKpornsfu.jpg",
+    appStoreUrl: "https://apps.apple.com/us/app/max-stream-hbo-tv-movies/id1666653815",
   },
   {
     id: 387,
     name: "Apple TV+",
-    shortName: "Apple",
-    // Slightly lighter than pure black so it's visible on dark card backgrounds
+    shortName: "Apple TV+",
     brandColor: "#2C2C2C",
     textColor: "#FFFFFF",
     logoPath: "/6uhKBfmtzFqOcLousHwZuzcrScK.jpg",
+    appStoreUrl: "https://apps.apple.com/us/app/apple-tv/id1174078549",
   },
   {
-    // Paramount Plus Essential tier — covers base subscription content
     id: 2616,
     name: "Paramount+",
-    shortName: "Paramount",
+    shortName: "Paramount+",
     brandColor: "#1A58C5",
     textColor: "#FFFFFF",
     logoPath: "/5wym1C0jAvJeGirPdgVpcW0CCuy.jpg",
+    appStoreUrl: "https://apps.apple.com/us/app/paramount/id1340650234",
   },
   {
-    // Peacock Premium — standard subscription tier
     id: 386,
     name: "Peacock",
     shortName: "Peacock",
     brandColor: "#000000",
     textColor: "#FFFFFF",
     logoPath: "/2aGrp1xw3qhwCYvNGAJZPdjfeeX.jpg",
+    appStoreUrl: "https://apps.apple.com/us/app/peacock-tv-stream-tv-movies/id1508186374",
   },
 ];
 

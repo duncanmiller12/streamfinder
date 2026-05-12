@@ -8,42 +8,32 @@ interface Props {
   result: FilteredResult;
   /** 0-based index used to stagger the fade-in animation delay. */
   index: number;
+  onSelect: () => void;
 }
 
 const POSTER_BASE = "https://image.tmdb.org/t/p/w185";
-const TMDB_LOGO_BASE = "https://image.tmdb.org/t/p/w45";
+const LOGO_BASE = "https://image.tmdb.org/t/p/w92";
 
-/**
- * A single horizontal result card.
- *
- * Layout (desktop / wider mobile):
- *   ┌──────┬─────────────────────────────────┐
- *   │      │  Title (year)  [Movie | TV]     │
- *   │poster│  Overview…                      │
- *   │      │  [Netflix] [Hulu]               │
- *   └──────┴─────────────────────────────────┘
- *
- * The poster sits on the left as a flex-shrink-0 column; the right column
- * fills remaining space.  When a poster is unavailable a dark placeholder
- * with a play-button icon is shown instead.
- */
-export default function ResultCard({ result, index }: Props) {
+export default function ResultCard({ result, index, onSelect }: Props) {
   return (
     <div
+      role="button"
+      tabIndex={0}
+      onClick={onSelect}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") onSelect();
+      }}
       className="result-card-enter flex bg-gray-900 rounded-xl overflow-hidden
-                 hover:bg-gray-800 transition-colors"
+                 hover:bg-gray-800 transition-colors cursor-pointer"
       style={{ animationDelay: `${index * 40}ms` }}
     >
       {/* ── Poster column ──────────────────────────────────────────────── */}
       <div className="w-24 sm:w-28 flex-shrink-0 relative">
-        {/* Placeholder always present behind the image */}
         <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
           <svg className="w-8 h-8 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z" />
           </svg>
         </div>
-
-        {/* Actual poster — hidden via CSS if it fails to load */}
         {result.posterPath && (
           <img
             src={`${POSTER_BASE}${result.posterPath}`}
@@ -51,7 +41,6 @@ export default function ResultCard({ result, index }: Props) {
             className="relative w-full h-full object-cover"
             loading="lazy"
             onError={(e) => {
-              // Remove the image so the placeholder shows through
               (e.currentTarget as HTMLImageElement).style.display = "none";
             }}
           />
@@ -91,26 +80,30 @@ export default function ResultCard({ result, index }: Props) {
           )}
         </div>
 
-        {/* Streaming-service logos */}
+        {/* Streaming-service logos — larger, clickable, open App Store */}
         <div className="flex flex-wrap items-center gap-2 mt-2">
           {result.matchedProviders.map((provider) => {
             const service = SERVICE_MAP.get(provider.providerId);
             if (!service) return null;
             return (
-              <div
+              <a
                 key={provider.providerId}
-                className="relative group"
+                href={service.appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 title={service.name}
+                className="flex-shrink-0 hover:scale-110 transition-transform"
+                onClick={(e) => e.stopPropagation()}
               >
                 <Image
-                  src={`${TMDB_LOGO_BASE}${service.logoPath}`}
+                  src={`${LOGO_BASE}${service.logoPath}`}
                   alt={service.name}
-                  width={32}
-                  height={32}
-                  className="rounded-md object-contain"
+                  width={40}
+                  height={40}
+                  className="rounded-lg object-contain"
                   unoptimized
                 />
-              </div>
+              </a>
             );
           })}
         </div>

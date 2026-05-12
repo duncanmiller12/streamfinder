@@ -11,6 +11,7 @@ interface Props {
   hasQuery: boolean;
   /** Total results returned by the API *before* client-side service filtering. */
   totalUnfiltered: number;
+  onSelect: (result: FilteredResult) => void;
 }
 
 // ─── Sub-components for each state ──────────────────────────────────────────
@@ -104,6 +105,7 @@ export default function ResultsList({
   error,
   hasQuery,
   totalUnfiltered,
+  onSelect,
 }: Props) {
   // 1. No query entered yet
   if (!hasQuery && !isLoading) return <EmptyPrompt />;
@@ -127,7 +129,12 @@ export default function ResultsList({
         {results.length} result{results.length !== 1 ? "s" : ""} on your services
       </p>
       {results.map((result, i) => (
-        <ResultCard key={`${result.type}-${result.id}`} result={result} index={i} />
+        <ResultCard
+          key={`${result.type}-${result.id}`}
+          result={result}
+          index={i}
+          onSelect={() => onSelect(result)}
+        />
       ))}
     </div>
   );

@@ -5,6 +5,7 @@ import type { SearchResult, FilteredResult } from "@/lib/types";
 import OnboardingScreen from "@/components/OnboardingScreen";
 import SearchBar from "@/components/SearchBar";
 import ResultsList from "@/components/ResultsList";
+import DetailView from "@/components/DetailView";
 import SettingsModal from "@/components/SettingsModal";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -45,6 +46,9 @@ export default function App() {
 
   // ── Settings modal visibility ─────────────────────────────────────────────
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  // ── Detail view ───────────────────────────────────────────────────────────
+  const [selectedResult, setSelectedResult] = useState<FilteredResult | null>(null);
 
   // ── Effect: read persisted selection from localStorage ────────────────────
   useEffect(() => {
@@ -155,6 +159,7 @@ export default function App() {
           error={searchError}
           hasQuery={!!debouncedQuery.trim()}
           totalUnfiltered={allResults.length}
+          onSelect={setSelectedResult}
         />
       </div>
 
@@ -166,6 +171,13 @@ export default function App() {
         selectedServices={selectedServiceIds}
         onSave={saveServices}
       />
+
+      {selectedResult && (
+        <DetailView
+          result={selectedResult}
+          onBack={() => setSelectedResult(null)}
+        />
+      )}
     </div>
   );
 }
