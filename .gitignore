@@ -1,1 +1,22 @@
+# dependencies
 node_modules
+
+# next.js build output and dev cache
+/.next/
+/out/
+
+# production build
+/build
+
+# TypeScript build info
+*.tsbuildinfo
+next-env.d.ts
+
+# local env files
+.env*.local
+
+# macOS metadata
+.DS_Store
+
+# Vercel
+.vercel
