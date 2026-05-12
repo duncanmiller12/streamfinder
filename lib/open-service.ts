@@ -21,10 +21,13 @@ export function openServiceApp(service: StreamingService): void {
 
   window.location.href = service.appScheme;
 
+  // 1500ms gives iOS enough time to complete the app-switch transition.
+  // The extra !document.hidden guard catches cases where the visibilitychange
+  // fired just after the timeout was scheduled but before it ran.
   const fallback = setTimeout(() => {
     document.removeEventListener("visibilitychange", onVisibilityChange);
-    if (!appOpened) {
+    if (!appOpened && !document.hidden) {
       window.open(service.appStoreUrl, "_blank", "noopener,noreferrer");
     }
-  }, 800);
+  }, 1500);
 }
