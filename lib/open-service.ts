@@ -1,10 +1,16 @@
 import type { StreamingService } from "./types";
 
 /**
- * Attempts to open the native app via its custom URL scheme.
- * If the app is installed, iOS will launch it and the page becomes hidden —
- * detected via visibilitychange. If the page is still visible after 800ms the
- * app isn't installed and we redirect to the App Store instead.
+ * Opens the native app if installed, otherwise opens the App Store — no
+ * browser error dialogs or popup-blocker prompts.
+ *
+ * Two key techniques:
+ *  1. Hidden iframe for the URL scheme attempt: iOS silences the
+ *     "Safari cannot open the page" error when the navigation happens inside
+ *     an iframe rather than on the top-level page.
+ *  2. window.location.href for the App Store fallback: navigating the current
+ *     tab is never treated as a popup. iOS intercepts apps.apple.com as a
+ *     universal link and opens the App Store app without leaving the page.
  */
 export function openServiceApp(service: StreamingService): void {
   let appOpened = false;
@@ -19,15 +25,20 @@ export function openServiceApp(service: StreamingService): void {
 
   document.addEventListener("visibilitychange", onVisibilityChange);
 
-  window.location.href = service.appScheme;
+  // Attempt to open the app via a hidden iframe — errors are silenced.
+  const iframe = document.createElement("iframe");
+  iframe.style.cssText =
+    "position:fixed;top:-1px;left:-1px;width:1px;height:1px;opacity:0;border:0;";
+  iframe.src = service.appScheme;
+  document.body.appendChild(iframe);
 
-  // 1500ms gives iOS enough time to complete the app-switch transition.
-  // The extra !document.hidden guard catches cases where the visibilitychange
-  // fired just after the timeout was scheduled but before it ran.
   const fallback = setTimeout(() => {
     document.removeEventListener("visibilitychange", onVisibilityChange);
+    if (document.body.contains(iframe)) document.body.removeChild(iframe);
     if (!appOpened && !document.hidden) {
-      window.open(service.appStoreUrl, "_blank", "noopener,noreferrer");
+      // Navigate the current tab — no popup blocker, and iOS opens the
+      // App Store app via universal link without leaving this page.
+      window.location.href = service.appStoreUrl;
     }
   }, 1500);
 }
