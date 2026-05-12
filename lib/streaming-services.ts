@@ -19,7 +19,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#E50914",
     textColor: "#FFFFFF",
     logoPath: "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
-    appStoreUrl: "https://apps.apple.com/us/app/netflix/id363590051",
+    appStoreUrl: "https://apps.apple.com/app/id363590051",
   },
   {
     id: 15,
@@ -28,7 +28,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#28B46C",
     textColor: "#FFFFFF",
     logoPath: "/zxrVdFjIjLqkfnwyghnfywTn3Lh.jpg",
-    appStoreUrl: "https://apps.apple.com/us/app/hulu-stream-movies-tv/id376510438",
+    appStoreUrl: "https://apps.apple.com/app/id376510438",
   },
   {
     id: 337,
@@ -37,7 +37,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#17337D",
     textColor: "#FFFFFF",
     logoPath: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
-    appStoreUrl: "https://apps.apple.com/us/app/disney/id1446075923",
+    appStoreUrl: "https://apps.apple.com/app/id1446075923",
   },
   {
     id: 9,
@@ -46,7 +46,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#00A8E1",
     textColor: "#FFFFFF",
     logoPath: "/pvske1MyAoymrs5bguRfVqYiM9a.jpg",
-    appStoreUrl: "https://apps.apple.com/us/app/amazon-prime-video/id545519333",
+    appStoreUrl: "https://apps.apple.com/app/id545519333",
   },
   {
     id: 1899,
@@ -55,7 +55,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#002BE7",
     textColor: "#FFFFFF",
     logoPath: "/jbe4gVSfRlbPTdESXhEKpornsfu.jpg",
-    appStoreUrl: "https://apps.apple.com/us/app/max-stream-hbo-tv-movies/id1666653815",
+    appStoreUrl: "https://apps.apple.com/app/id1666653815",
   },
   {
     id: 387,
@@ -64,7 +64,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#2C2C2C",
     textColor: "#FFFFFF",
     logoPath: "/6uhKBfmtzFqOcLousHwZuzcrScK.jpg",
-    appStoreUrl: "https://apps.apple.com/us/app/apple-tv/id1174078549",
+    appStoreUrl: "https://apps.apple.com/app/id1174078549",
   },
   {
     id: 2616,
@@ -73,7 +73,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#1A58C5",
     textColor: "#FFFFFF",
     logoPath: "/5wym1C0jAvJeGirPdgVpcW0CCuy.jpg",
-    appStoreUrl: "https://apps.apple.com/us/app/paramount/id1340650234",
+    appStoreUrl: "https://apps.apple.com/app/id1340650234",
   },
   {
     id: 386,
@@ -82,7 +82,7 @@ export const STREAMING_SERVICES: StreamingService[] = [
     brandColor: "#000000",
     textColor: "#FFFFFF",
     logoPath: "/2aGrp1xw3qhwCYvNGAJZPdjfeeX.jpg",
-    appStoreUrl: "https://apps.apple.com/us/app/peacock-tv-stream-tv-movies/id1508186374",
+    appStoreUrl: "https://apps.apple.com/app/id1508186374",
   },
 ];
 
