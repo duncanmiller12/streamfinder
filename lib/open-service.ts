@@ -1,16 +1,14 @@
 import type { StreamingService } from "./types";
 
 /**
- * Opens the native app if installed, otherwise opens the App Store — no
- * browser error dialogs or popup-blocker prompts.
+ * Opens the native app if installed, otherwise falls back to the App Store.
  *
- * Two key techniques:
- *  1. Hidden iframe for the URL scheme attempt: iOS silences the
- *     "Safari cannot open the page" error when the navigation happens inside
- *     an iframe rather than on the top-level page.
- *  2. window.location.href for the App Store fallback: navigating the current
- *     tab is never treated as a popup. iOS intercepts apps.apple.com as a
- *     universal link and opens the App Store app without leaving the page.
+ * - window.location.href with the URL scheme opens the app when installed.
+ *   iOS will show a brief "cannot open page" dialog if the app isn't there —
+ *   that's a native iOS limitation that can't be suppressed from a web page.
+ * - The App Store fallback uses window.location.href (not window.open) so iOS
+ *   never treats it as a popup. apps.apple.com is a universal link, so iOS
+ *   opens the App Store app without navigating away from this page.
  */
 export function openServiceApp(service: StreamingService): void {
   let appOpened = false;
@@ -25,19 +23,16 @@ export function openServiceApp(service: StreamingService): void {
 
   document.addEventListener("visibilitychange", onVisibilityChange);
 
-  // Attempt to open the app via a hidden iframe — errors are silenced.
-  const iframe = document.createElement("iframe");
-  iframe.style.cssText =
-    "position:fixed;top:-1px;left:-1px;width:1px;height:1px;opacity:0;border:0;";
-  iframe.src = service.appScheme;
-  document.body.appendChild(iframe);
+  // Attempt to open the native app. If the app is installed iOS launches it
+  // and the page goes hidden; if not, iOS shows a brief error dialog.
+  window.location.href = service.appScheme;
 
   const fallback = setTimeout(() => {
     document.removeEventListener("visibilitychange", onVisibilityChange);
-    if (document.body.contains(iframe)) document.body.removeChild(iframe);
     if (!appOpened && !document.hidden) {
-      // Navigate the current tab — no popup blocker, and iOS opens the
-      // App Store app via universal link without leaving this page.
+      // Navigate the current tab (not window.open) so iOS doesn't treat this
+      // as a popup. apps.apple.com is a universal link — iOS opens the App
+      // Store app without navigating away from this page.
       window.location.href = service.appStoreUrl;
     }
   }, 1500);
